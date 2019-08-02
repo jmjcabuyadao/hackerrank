@@ -1,5 +1,5 @@
 /** 
- * This code snippet takes in 2 lines of input
+ * This code snippet takes in 2 lines of input from the console
  * Line 1: integer N
  * Line 2: array of N space-separated integers A
  * Output: array A with elements in reverse
@@ -12,6 +12,7 @@ const fs = require('fs');
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
 
+const outputPath = process.env.OUTPUT_PATH || '../lib/array-reverse-output.txt';
 let inputString = '';
 let currentLine = 0;
 
@@ -42,8 +43,6 @@ function reverseArray(a) {
 }
 
 function main() {
-    const outputPath = process.env.OUTPUT_PATH || 'output.txt';
-
     const ws = fs.createWriteStream(outputPath);
 
     const arrCount = parseInt(readLine(), 10);
@@ -52,7 +51,7 @@ function main() {
 
     const res = reverseArray(arr);
 
-    ws.write(res.join(' ') + '\n');
+    ws.write(res.join(' '));
 
     ws.end();
 }
